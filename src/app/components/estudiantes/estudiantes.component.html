@@ -1,0 +1,57 @@
+<h1>Estudiantes 2022</h1>
+
+<p> Curso coderhouse - Angular </p>
+
+<div class="grid text-center" style="--bs-columns: 6;">
+
+  <table class="table table-dark table-borderless" >
+  <thead>
+    <tr>
+      <th scope="col"> Apellido </th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Contacto</th>
+      <th scope="col">Fecha de Nacimiento</th>
+      <th scope="col"> Nota final</th>
+      <th scope="col"> Condición</th>
+
+    </tr>
+  </thead>
+   <tbody>     
+    
+  <tr class *ngFor="let alumno of alumnos">
+   
+   <td>{{alumno.apellido}}</td>
+   <td>{{alumno.nombre }}</td>
+   <td>{{alumno.email }}</td>
+   <td>{{alumno.fechaNacimiento}}</td>
+   <td>{{alumno.nota}}</td>
+   
+<td> <div class="aprobados" *ngIf="alumno.nota >= variableNota ">
+El alumno está aprobado. 
+</div>
+<div class="desaprobados" *ngIf="alumno.nota < variableNota ">
+El alumno está desaprobado. 
+</div> </td>
+
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="container">
+<h3 [ngClass]="variableNota > 6 ? 'texto-correcto' : 'texto-incorrecto'"> Para aprobar el curso la nota del alumno debe ser mayor a: {{variableNota}} </h3>
+
+<button button class="btn btn-primary" (click)="cambiarNota()" > Modificar Nota </button>
+
+<h4> Actualizado al: {{ hoy | date:'dd-MM-yy'}} </h4>
+
+<br> 
+<p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-diamond" viewBox="0 0 16 16">
+    <path d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.482 1.482 0 0 1 0-2.098L6.95.435zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z"/>
+    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+  </svg>
+    Resaltado en amarillo: requiere observar la información ingresada. 
+</p>
+
+</div>
